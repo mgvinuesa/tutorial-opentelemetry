@@ -1,0 +1,5 @@
+auto-instrumentation-service/.classpath
+auto-instrumentation-service/.project
+*.settings*
+*target/*
+*target*
