@@ -12,7 +12,7 @@
 	<artifactId>auto-instrumentation-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>
-		Servicio que nos permite validar la exportación de metricas y trazas con auto-instrumentacion
+		Servicio que nos permite validar la exportación de metricas y trazas con auto-instrumentacion contra Jaeger, Zipkin y Prometheus
 	</description>
 
 
