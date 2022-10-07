@@ -1,0 +1,22 @@
+version: '3'
+services:
+  collector:
+    image: otel/opentelemetry-collector-contrib:0.51.0
+    volumes:
+      - ./otel-config.yml:/otel-config.yml
+    command: ["--config=/otel-config.yml"]
+    ports:
+      - "4317:4317"   # otlp receiver
+  simple-collector-service:
+    build: ./
+    environment:
+      OTEL_SERVICE_NAME: "simple-collector-service" 
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
+      OTEL_LOGS_EXPORTER: "otlp" # logs are disabled by default due to Alpha status
+    ports:
+      - "8080:8080"
+    depends_on:
+      - collector
+
+
+ 

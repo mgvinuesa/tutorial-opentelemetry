@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-collector-service-sidecar-example
+  labels:
+    app: sidecar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sidecar
+  template:
+    metadata:
+      labels:
+        app: sidecar
+    spec:
+      containers:
+        - name: simple-collector-service
+          image: simple-collector-service_simple-collector-service
+          imagePullPolicy: Never
+        - name: collector
+          image: otel/opentelemetry-collector:0.51.0

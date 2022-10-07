@@ -3,3 +3,4 @@ auto-instrumentation-service/.project
 *.settings*
 *target/*
 *target*
+.project
