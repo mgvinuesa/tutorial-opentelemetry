@@ -4,15 +4,23 @@ services:
     build: ./
     environment:
       OTEL_SERVICE_NAME: "auto-instrumentation-service" 
-      OTEL_TRACES_EXPORTER: "jaeger"   
-      OTEL_EXPORTER_JAEGER_ENDPOINT: "http://jaeger:14250"  
+      OTEL_TRACES_EXPORTER: "jaeger,zipkin"   
+      OTEL_EXPORTER_JAEGER_ENDPOINT: "http://jaeger:14250"
+      OTEL_EXPORTER_ZIPKIN_ENDPOINT: "http://zipkin:9411/api/v2/spans"
       OTEL_METRICS_EXPORTER: "prometheus"
       OTEL_EXPORTER_PROMETHEUS_PORT: 19090
+      
     ports:
       - "8080:8080"
       - "19090:19090" #Prometheus scrapping port
     depends_on:
       - jaeger
+      - zipkin
+  zipkin:
+    image: openzipkin/zipkin:latest
+    ports:
+      - "9411:9411"
+  
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
