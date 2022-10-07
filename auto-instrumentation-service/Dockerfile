@@ -10,4 +10,4 @@ FROM openjdk:17-jdk-slim
 COPY --from=builder /usr/src/app/target/auto-instrumentation-service-0.0.1-SNAPSHOT.jar /app.jar
 COPY otel/opentelemetry-javaagent.jar /opentelemetry-javaagent.jar
 
-ENTRYPOINT java -jar -javaagent:/opentelemetry-javaagent.jar app.jar -Dotel.javaagent.debug=true
+ENTRYPOINT java -jar -javaagent:/opentelemetry-javaagent.jar app.jar 
