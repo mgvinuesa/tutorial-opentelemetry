@@ -8,5 +8,6 @@
   <modules>
   	<module>hello-service</module>
   	<module>simple-collector-service</module>
+  	<module>complex-collector-service</module>
   </modules>
 </project>
