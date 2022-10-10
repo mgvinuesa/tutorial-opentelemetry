@@ -25,9 +25,6 @@ exporters:
   logging:
     logLevel: DEBUG
 
-
-
-
 service:
   pipelines:
     traces:

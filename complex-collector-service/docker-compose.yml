@@ -35,18 +35,12 @@ services:
       - "8081:8080"
     depends_on:
       - collector
-  #Loki (needs promtail & grafana)
+  #Loki (needs grafana to visualize logs)
   loki:
     image: grafana/loki:2.3.0
     ports:
       - 3100:3100
     command: -config.file=/etc/loki/local-config.yaml
-
-  promtail:
-    image: grafana/promtail:2.3.0
-    volumes:
-      - /var/log:/var/log
-    command: -config.file=/etc/promtail/config.yml
   
   grafana:
     image: grafana/grafana:8.3.3
