@@ -4,3 +4,4 @@ auto-instrumentation-service/.project
 *target/*
 *target*
 .project
+*.classpath
