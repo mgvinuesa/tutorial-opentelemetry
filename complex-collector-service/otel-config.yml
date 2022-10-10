@@ -5,7 +5,10 @@ receivers:
 exporters:
   prometheus:
     endpoint: "0.0.0.0:8889"
-  
+    const_labels:
+      example: value
+    resource_to_telemetry_conversion:
+      enabled: true
   zipkin:
     endpoint: "http://zipkin:9411/api/v2/spans"
     format: proto
@@ -23,15 +26,9 @@ exporters:
     logLevel: DEBUG
 
 
-extensions:
-  health_check:
-  pprof:
-    endpoint: :1888
-  zpages:
-    endpoint: :55679
+
 
 service:
-  extensions: [pprof, zpages, health_check]
   pipelines:
     traces:
       receivers: [otlp]
