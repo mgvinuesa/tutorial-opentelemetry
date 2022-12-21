@@ -5,7 +5,7 @@ COPY pom.xml /usr/src/app
 
 RUN mvn -f /usr/src/app/pom.xml clean package
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:17.0.2-jdk-slim
 
 COPY --from=builder /usr/src/app/target/auto-instrumentation-service-0.0.1-SNAPSHOT.jar /app.jar
 COPY otel/opentelemetry-javaagent.jar /opentelemetry-javaagent.jar
