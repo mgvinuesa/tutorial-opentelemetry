@@ -4,7 +4,7 @@ receivers:
       grpc:
 exporters:
   logging:
-    logLevel: DEBUG
+    loglevel: DEBUG
 
 service:
   pipelines:
